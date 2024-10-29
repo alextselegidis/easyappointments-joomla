@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="4.0" client="site" method="upgrade">
+    <name>mod_easyappointments</name>
+    <author>alextselegidis.com</author>
+    <version>1.0.0</version>
+    <description>Joomla module to display Easy!Appointments iframe.</description>
+    <files>
+        <filename module="mod_easyappointments">mod_easyappointments.php</filename>
+        <filename>rules/url.php</filename>
+        <folder>tmpl</folder>
+    </files>
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field
+                        name="easyappointments_url"
+                        type="text"
+                        label="Easy!Appointments URL"
+                        description="Enter the URL for the Easy!Appointments WordPress plugin"
+                        required="true"
+                        validate="url"
+                        message="Invalid URL. Please enter a valid URL."
+                />
+            </fieldset>
+            <fieldset name="advanced">
+                <field
+                        name="width"
+                        type="text"
+                        label="Iframe Width"
+                        description="Enter the width of the iframe (e.g., 100%, 600px)"
+                        default="100%"
+                />
+                <field
+                        name="height"
+                        type="text"
+                        label="Iframe Height"
+                        description="Enter the height of the iframe (e.g., 600px)"
+                        default="600px"
+                />
+                <field
+                        name="provider_id"
+                        type="text"
+                        label="Provider ID"
+                        description="Enter the provider ID (if applicable)"
+                />
+                <field
+                        name="service_id"
+                        type="text"
+                        label="Service ID"
+                        description="Enter the service ID (if applicable)"
+                />
+                <field
+                        name="style"
+                        type="text"
+                        label="Iframe Style"
+                        description="Enter additional styles for the iframe"
+                />
+            </fieldset>
+        </fields>
+    </config>
+</extension>

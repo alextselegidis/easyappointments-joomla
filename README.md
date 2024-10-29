@@ -27,7 +27,7 @@ Leverage your conversion rates by integrating the booking form directly in your 
 have to leave your website for booking an appointment. Take advantage of the scheduling power of Easy!Appointment which
 will run smoothly with your Joomla installation.
 
-*Minimum Requirements: Joomla v4 & PHP v7*
+*Minimum Requirements: Joomla v4+ & PHP v7*
 
 ### Connecting Easy!Appointments with Joomla
 
