@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="module" version="4.0" client="site" method="upgrade">
-    <name>mod_easyappointments</name>
+    <name>Easy!Appointments</name>
     <author>alextselegidis.com</author>
+    <creationDate>2013-07</creationDate>
+    <copyright>(C) 2013 Alex Tselegidis</copyright>
+    <license>GNU/GPLv3 https://www.gnu.org/licenses/gpl-3.0.html</license>
+    <authorEmail>info@alextselegidis.com</authorEmail>
+    <authorUrl>alextselegidis.com</authorUrl>
     <version>1.0.0</version>
     <description>Joomla module to display Easy!Appointments iframe.</description>
     <files>
@@ -58,4 +63,7 @@
             </fieldset>
         </fields>
     </config>
+    <updateservers>
+        <server type="extension" priority="1" name="Easy!Appointments">https://raw.githubusercontent.com/alextselegidis/easyappointments-joomla/main/updateservers.xml</server>
+    </updateservers>
 </extension>
