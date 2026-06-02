@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<extension type="module" version="4.0" client="site" method="upgrade">
+<extension type="module" client="site" method="upgrade">
     <name>Easy!Appointments</name>
     <author>alextselegidis.com</author>
     <creationDate>2013-07</creationDate>
@@ -7,58 +7,89 @@
     <license>GNU/GPLv3 https://www.gnu.org/licenses/gpl-3.0.html</license>
     <authorEmail>info@alextselegidis.com</authorEmail>
     <authorUrl>alextselegidis.com</authorUrl>
-    <version>1.0.0</version>
-    <description>Joomla module to display Easy!Appointments iframe.</description>
+    <version>1.1.0</version>
+    <description>Joomla module to display an Easy!Appointments iframe.</description>
     <files>
         <filename module="mod_easyappointments">mod_easyappointments.php</filename>
-        <filename>rules/url.php</filename>
         <folder>tmpl</folder>
     </files>
     <config>
         <fields name="params">
             <fieldset name="basic">
                 <field
-                        name="easyappointments_url"
-                        type="text"
-                        label="Easy!Appointments URL"
-                        description="Enter the URL for the Easy!Appointments WordPress plugin"
-                        required="true"
-                        validate="url"
-                        message="Invalid URL. Please enter a valid URL."
+                    name="easyappointments_url"
+                    type="url"
+                    label="Easy!Appointments URL"
+                    description="Enter the Easy!Appointments booking URL."
+                    required="true"
+                    filter="url"
+                    schemes="http,https"
+                />
+                <field
+                    name="iframe_notice"
+                    type="note"
+                    class="alert alert-warning"
+                    label=""
+                    description="&lt;details style=&quot;cursor:pointer;width:100%;display:block;background:#fff8e8;padding:12px;border:1px solid #f5c06f;border-radius:4px;&quot;&gt;&lt;summary style=&quot;font-weight:bold;padding:4px 0;list-style:none;user-select:none;width:100%;display:block;color:#856404;&quot;&gt;Easy!Appointments 1.6.0 - Required Configuration&lt;/summary&gt;&lt;div style=&quot;margin-top:12px;&quot;&gt;&lt;p&gt;Easy!Appointments v1.6.0 introduced stricter HTTP security headers that block iframe embedding by default. If your booking form is not loading inside the page, you need to apply the following one-line fix to your Easy!Appointments installation.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Step 1:&lt;/strong&gt; Open the file &lt;code&gt;application/hooks/security_headers.php&lt;/code&gt; in your Easy!Appointments installation.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Step 2:&lt;/strong&gt; Find the following line:&lt;/p&gt;&lt;input type=&quot;text&quot; readonly value=&quot;header('X-Frame-Options: SAMEORIGIN');&quot; onclick=&quot;this.select();&quot; style=&quot;width:100%;padding:8px;font-family:monospace;background:#f5f5f5;border:1px solid #ccc;border-radius:4px;margin-bottom:12px;&quot; /&gt;&lt;p&gt;&lt;strong&gt;Step 3:&lt;/strong&gt; Replace it with:&lt;/p&gt;&lt;input type=&quot;text&quot; readonly value=&quot;header(&amp;quot;X-Frame-Options: ALLOWALL&amp;quot;);&quot; onclick=&quot;this.select();&quot; style=&quot;width:100%;padding:8px;font-family:monospace;background:#f5f5f5;border:1px solid #ccc;border-radius:4px;margin-bottom:12px;&quot; /&gt;&lt;p&gt;&lt;strong&gt;Step 4:&lt;/strong&gt; Save the file and reload your Joomla page — the booking form should now embed correctly.&lt;/p&gt;&lt;p style=&quot;margin-bottom:0;&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; This fix is only required if your Easy!Appointments installation is hosted on a different domain from your Joomla site (e.g. bookings.example.com vs example.com). If Easy!Appointments lives in a subfolder of the same domain (e.g. example.com/easyappointments), iframe embedding works without this change.&lt;/p&gt;&lt;/div&gt;&lt;/details&gt;&lt;style&gt;.alert.alert-warning { background: transparent !important; border: none !important; padding: 0 !important; margin: 0 !important; width: 100% !important; display: block !important; }&lt;/style&gt;"
                 />
             </fieldset>
             <fieldset name="advanced">
                 <field
-                        name="width"
-                        type="text"
-                        label="Iframe Width"
-                        description="Enter the width of the iframe (e.g., 100%, 600px)"
-                        default="100%"
+                    name="width"
+                    type="text"
+                    label="Iframe Width"
+                    description="Enter the width of the iframe (e.g. 100%, 600px)."
+                    default="100%"
                 />
                 <field
-                        name="height"
-                        type="text"
-                        label="Iframe Height"
-                        description="Enter the height of the iframe (e.g., 600px)"
-                        default="600px"
+                    name="height"
+                    type="text"
+                    label="Iframe Height"
+                    description="Enter the height of the iframe (e.g. 600px)."
+                    default="600px"
                 />
                 <field
-                        name="provider_id"
-                        type="text"
-                        label="Provider ID"
-                        description="Enter the provider ID (if applicable)"
+                    name="provider_id"
+                    type="text"
+                    label="Provider ID"
+                    description="Enter the provider ID if applicable."
                 />
                 <field
-                        name="service_id"
-                        type="text"
-                        label="Service ID"
-                        description="Enter the service ID (if applicable)"
+                    name="service_id"
+                    type="text"
+                    label="Service ID"
+                    description="Enter the service ID if applicable."
                 />
                 <field
-                        name="style"
-                        type="text"
-                        label="Iframe Style"
-                        description="Enter additional styles for the iframe"
+                    name="style"
+                    type="text"
+                    label="Iframe Style"
+                    description="Enter additional iframe styles."
+                />
+                <field
+                    name="iframe_title"
+                    type="text"
+                    label="Iframe Title"
+                    description="Accessible title for the booking iframe."
+                    default="Easy!Appointments Booking"
+                />
+                <field
+                    name="show_open_link"
+                    type="radio"
+                    label="Show Open Link"
+                    description="Display a direct link below the embedded booking page."
+                    default="1"
+                    class="btn-group btn-group-yesno"
+                >
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+                <field
+                    name="open_link_text"
+                    type="text"
+                    label="Open Link Text"
+                    description="Text shown for the direct booking page link."
+                    default="Open booking page in a new tab"
                 />
             </fieldset>
         </fields>

@@ -11,7 +11,12 @@
  * @since       v1.0.0
  * ---------------------------------------------------------------------------- */
 
-use Joomla\CMS\Factory;
+/**
+ * @var Joomla\Registry\Registry $params Module parameters
+ * @var stdClass $module Module object
+ */
+
+use Joomla\CMS\Helper\ModuleHelper;
 
 $easyappointments_url = $params->get('easyappointments_url');
 $width = $params->get('width', '100%');
@@ -24,4 +29,4 @@ if (filter_var($easyappointments_url, FILTER_VALIDATE_URL) === false) {
     $easyappointments_url = null;
 }
 
-require JModuleHelper::getLayoutPath('mod_easyappointments');
+require ModuleHelper::getLayoutPath('mod_easyappointments', $params->get('layout', 'default'));
